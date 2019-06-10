@@ -4,8 +4,8 @@ let angle=0;
 let button;
 
 function setup(){
-  createCanvas(600,600,WEBGL);
-  cube=new sponge(0,0,0,300);
+  createCanvas(1000,1000,WEBGL);
+  cube=new sponge(0,0,0,500);
   child.push(cube);
   button=createButton("PRESS TO ITERATE")
   button.mousePressed(next);
@@ -64,7 +64,7 @@ class sponge{
         for(let k of z){
           a=[i,j,k];
           if(check(unwanted,a)){
-            children.push(new sponge(this.x+child_size*i,this.y+child_size*j,this.z+child_size*k,child_size-5));
+            children.push(new sponge(this.x+child_size*i,this.y+child_size*j,this.z+child_size*k,child_size-1));
           }
         }
       }
