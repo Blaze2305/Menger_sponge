@@ -37,16 +37,52 @@ class sponge{
   generate(){
     let children=[];
     let child_size=this.size/3;
+    let unwanted=[[1,0,0],
+                  [0,1,0],
+                  [0,0,1],
+                  [-1,0,0],
+                  [0,-1,0],
+                  [0,0,-1],
+                  [0,0,0]]
+    let a=[];
     let x=[1,0,-1];
     let y=[1,0,-1];
     let z=[1,0,-1];
     for(let i of x){
       for(let j of y){
         for(let k of z){
-          children.push(new sponge(child_size*i,child_size*j,child_size*k,child_size-5));
+          a=[i,j,k];
+          if(check(unwanted,a)){
+            children.push(new sponge(child_size*i,child_size*j,child_size*k,child_size-5));
+          }
         }
       }
     }
     return(children);
     }
+}
+
+
+function check(a,b){
+  let i,j;
+  let flag=0;
+  let counter;
+  for(i=0;i<a.length;i++){
+    counter=0;
+    for(j=0;j<a[i].length;j++){
+      if(a[i][j]==b[j]){
+        counter+=1;
+      }
+      if(counter==3){
+        flag=1;
+        break;
+      }
+    }
+  }
+  if(flag==0){
+    return(true);
+  }
+  else{
+    return(false);
+  }
 }
